@@ -118,7 +118,7 @@ public class Tests {
     var create_button = _driver.FindElement(By.CssSelector("[data-tid='SaveButton']"));
     create_button.Click();
 
-    var folders = _driver.FindElement(By.CssSelector("[data-tid='Folders']"));
+    var folders = _driver.FindElement(By.XPath("//*[contains(text(), 'New folder')]"));
     Assert.That(folders.Text, Does.Contain("New folder"), "Не удалось создать новую папку");
   }
 
