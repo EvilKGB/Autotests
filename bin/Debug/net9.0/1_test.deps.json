@@ -14,6 +14,7 @@
           "NUnit.Analyzers": "4.4.0",
           "NUnit3TestAdapter": "4.6.0",
           "Selenium.WebDriver": "4.31.0",
+          "SeleniumExtras.WaitHelpers": "1.0.2",
           "coverlet.collector": "6.0.2"
         },
         "runtime": {
@@ -322,6 +323,11 @@
           }
         }
       },
+      "SeleniumExtras.WaitHelpers/1.0.2": {
+        "dependencies": {
+          "Selenium.WebDriver": "4.31.0"
+        }
+      },
       "System.Reflection.Metadata/1.6.0": {}
     }
   },
@@ -407,6 +413,13 @@
       "sha512": "sha512-RT5Pg6UVyxe/+S/H808VAbfXX4kHQdvo/U28oViwUcCpC4WL7zHq2GgxY/b9zNLTcwJ8zfqu+WmHPifkTx+BCQ==",
       "path": "selenium.webdriver/4.31.0",
       "hashPath": "selenium.webdriver.4.31.0.nupkg.sha512"
+    },
+    "SeleniumExtras.WaitHelpers/1.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-de7m30nkZZLkfCncYBdluUpM27AR/Vkk4kiA4HRQbV+fZI3ps4qGIeJCuj8TAMXdMfQik5Rno8xPnFBIod+ebg==",
+      "path": "seleniumextras.waithelpers/1.0.2",
+      "hashPath": "seleniumextras.waithelpers.1.0.2.nupkg.sha512"
     },
     "System.Reflection.Metadata/1.6.0": {
       "type": "package",

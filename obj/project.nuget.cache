@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "0ePooWD4pdw=",
+  "dgSpecHash": "Wloow3wlS60=",
   "success": true,
   "projectFilePath": "E:\\kurs\\test\\1_test\\1_test.csproj",
   "expectedPackageFiles": [
@@ -15,6 +15,7 @@
     "C:\\Users\\Алекс\\.nuget\\packages\\nunit.analyzers\\4.4.0\\nunit.analyzers.4.4.0.nupkg.sha512",
     "C:\\Users\\Алекс\\.nuget\\packages\\nunit3testadapter\\4.6.0\\nunit3testadapter.4.6.0.nupkg.sha512",
     "C:\\Users\\Алекс\\.nuget\\packages\\selenium.webdriver\\4.31.0\\selenium.webdriver.4.31.0.nupkg.sha512",
+    "C:\\Users\\Алекс\\.nuget\\packages\\seleniumextras.waithelpers\\1.0.2\\seleniumextras.waithelpers.1.0.2.nupkg.sha512",
     "C:\\Users\\Алекс\\.nuget\\packages\\system.reflection.metadata\\1.6.0\\system.reflection.metadata.1.6.0.nupkg.sha512"
   ],
   "logs": []

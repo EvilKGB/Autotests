@@ -25,11 +25,6 @@ public class Tests
         Login("misterpeka@gmail.com","Aaaaa12345!");
     }
 
-    private object WebDriverWait(ChromeDriver driver, TimeSpan timeSpan)
-    {
-        throw new NotImplementedException();
-    }
-
     private void Login(string username, string password)
     {
         _driver.Navigate().GoToUrl("https://staff-testing.testkontur.ru");  
@@ -39,7 +34,12 @@ public class Tests
 
         _wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("[data-tid='Title']")));
     }
-
+    [TearDown]
+    public void TearDown()
+    {
+        _driver.Quit();
+        _driver.Dispose();
+    }
 
     [Test]
     public void Logout_test()
@@ -57,14 +57,14 @@ public class Tests
     public void Adding_new_comment()
     {
         _driver.Navigate().GoToUrl("https://staff-testing.testkontur.ru/comments");
-        _wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("[placeholder='Комментировать...']")));
 
-        var comment = _driver.FindElement(By.CssSelector("[placeholder='Комментировать...']"));
+        var comment = _driver.FindElement(By.CssSelector("[data-tid='AddComment']"));
         comment.Click();
-        comment = _driver.FindElement(By.CssSelector("[placeholder='Комментировать...']"));
-        comment.SendKeys("Test comment");
 
-        var button = _driver.FindElement(By.CssSelector("[class='react-ui-j884du react-ui-button-caption']"));
+        var comment_field = _driver.FindElement(By.CssSelector("[data-tid='CommentInput']"));
+        comment_field.SendKeys("Test comment");
+
+        var button = _driver.FindElement(By.CssSelector("[data-tid='SendComment']"));
         button.Click();
         _wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("[data-tid='RemoveComment']")));
 
@@ -79,8 +79,7 @@ public class Tests
       public void Change_second_email()
       {
         _driver.Navigate().GoToUrl("https://staff-testing.testkontur.ru/profile/settings/edit");
-        _wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("[data-tid='AdditionalEmail'] [data-tid='Input']")));
-
+  
         var second_email = _driver.FindElement(By.CssSelector("[data-tid='AdditionalEmail'] [data-tid='Input']"));
         second_email.SendKeys(Keys.Control + "a");
         second_email.SendKeys(Keys.Delete);
@@ -99,11 +98,10 @@ public class Tests
       public void Create_сommunity()
       {
         _driver.Navigate().GoToUrl("https://staff-testing.testkontur.ru/communities");
-        _wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("[class='sc-juXuNZ sc-ecQkzk WTxfS vPeNx']")));
 
-        var create_button = _driver.FindElement(By.CssSelector("[class='sc-juXuNZ sc-ecQkzk WTxfS vPeNx']"));
+        var create_button = _driver.FindElement(By.CssSelector("button.vPeNx"));
         create_button.Click();
-        _wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("[class='react-ui-17axm2e']")));
+        _wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("[data-tid='CancelButton']")));
 
         var community_name = _driver.FindElement(By.CssSelector("[data-tid='Name']"));
         community_name.SendKeys("New community");
@@ -122,8 +120,7 @@ public class Tests
       public void Create_folder()
       {
         _driver.Navigate().GoToUrl("https://staff-testing.testkontur.ru/files");
-        _wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("[data-tid='DropdownButton'] [class='react-ui-17axm2e']")));
-
+   
         var drop_button = _driver.FindElement(By.CssSelector("[data-tid='DropdownButton'] [class='react-ui-1f3jmd3']"));
         drop_button.Click();
 
@@ -135,17 +132,10 @@ public class Tests
 
         var create_button = _driver.FindElement(By.CssSelector("[data-tid='SaveButton']"));
         create_button.Click();
-        _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
 
         var folders = _driver.FindElement(By.CssSelector("[data-tid='Folders']"));
         Assert.That(folders.Text, Does.Contain("New folder"), "Папка не найдена");  
 
       }
 
-    [TearDown]
-    public void TearDown()
-    {
-        _driver?.Quit();
-        _driver?.Dispose();
-    }
 }
