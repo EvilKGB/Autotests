@@ -46,7 +46,7 @@ public class Tests {
     var Logout_button = _driver.FindElement(By.CssSelector("[data-tid='Logout']"));
     Logout_button.Click();
 
-    Assert.That(_driver.Url.Contains("https://staff-testing.testkontur.ru/Account/Logout"), "Не тот URL");
+    Assert.That(_driver.Url.Contains("https://staff-testing.testkontur.ru/Account/Logout"), "Фактический URL не совпадает с ожидаемым URL страницы Logout");
   }
 
   [Test]
@@ -64,7 +64,7 @@ public class Tests {
     _wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("[data-tid='RemoveComment']")));
 
     var comment_text = _driver.FindElement(By.CssSelector("[data-tid='TextComment']"));
-    Assert.That(comment_text.Text, Does.Contain("Test comment"), "Комментарий не появился");
+    Assert.That(comment_text.Text, Does.Contain("Test comment"), "Не удалось оставить новый комментарий");
   }
 
   [Test]
@@ -80,7 +80,7 @@ public class Tests {
     save.Click();
 
     var Contact = _driver.FindElement(By.CssSelector("[data-tid='ContactCard']"));
-    Assert.That(Contact.Text, Does.Contain("SecondEmail@mail.ru"), "Почта не изменилась");
+    Assert.That(Contact.Text, Does.Contain("SecondEmail@mail.ru"), "Дополнительный адрес электронной почты не изменился");
   }
 
   [Test]
@@ -119,7 +119,7 @@ public class Tests {
     create_button.Click();
 
     var folders = _driver.FindElement(By.CssSelector("[data-tid='Folders']"));
-    Assert.That(folders.Text, Does.Contain("New folder"), "Папка не найдена");
+    Assert.That(folders.Text, Does.Contain("New folder"), "Не удалось создать новую папку");
   }
 
 }
